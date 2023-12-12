@@ -22,4 +22,41 @@
 // * Print whether the employee may access the building
 //   * Must use a function that utilizes the question mark operator to do this
 
-fn main() {}
+enum Job {
+    Maintenance,
+    Marketer,
+    Manager,
+    Supervisor,
+    Kitchen,
+    Assembly,
+}
+
+struct Employee {
+    job: Job,
+    employed: bool,
+}
+
+fn access(employee: Employee) -> Result<(), ()> {
+    if employee.employed == false {
+        return Err(println!("Access denied"));
+    }
+
+    match employee.job {
+        Job::Maintenance => Ok(println!("Access granted")),
+        Job::Marketer => Ok(println!("Access granted")),
+        Job::Manager => Ok(println!("Access granted")),
+        Job::Supervisor => Err(println!("Access denied")),
+        Job::Kitchen => Err(println!("Access denied")),
+        Job::Assembly => Err(println!("Access denied")),
+    }
+}
+
+fn main() {
+    let employee1 = Employee {
+        job: Job::Marketer,
+        employed: false,
+    };
+
+    let result = access(employee1);
+    println!("{:?}", result)
+}
