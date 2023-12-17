@@ -32,3 +32,29 @@ fn concat(first: &str, second: &str) -> String {
 }
 
 fn main() {}
+
+#[cfg(test)]
+mod test {
+    use crate::*;
+
+    #[test]
+    fn check_clamp() {
+        let result = clamp(1, 2, 3);
+        let expected = 2;
+        assert_eq!(result, expected, "not right");
+    }
+
+    #[test]
+    fn check_div() {
+        let result = div(6, 3);
+        let expected = Some(2);
+        assert_eq!(result, expected, "not right");
+    }
+
+    #[test]
+    fn check_concat() {
+        let result = concat("un", "told");
+        let expected = String::from("un told");
+        assert_eq!(result, expected, "not right");
+    }
+}

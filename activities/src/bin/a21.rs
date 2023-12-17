@@ -25,4 +25,10 @@ fn find_user(name: &str) -> Option<i32> {
     }
 }
 
-fn main() {}
+fn main() {
+    let user = find_user("sam").map(|user| println!("{:?}", user));
+
+    if user.is_some() {
+        println!("{:?}", user)
+    }
+}
